@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#FFF4E6">
+<title>Relève</title>
+<link rel="icon" href="icone.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!--
+  Page d'installation de Relève (le code QR du billet y mène).
+  Aucune police, aucun script ni aucune image venant d'ailleurs, aucun traceur : la page ne
+  parle à personne. Le NIP est après le « # » de l'adresse : un navigateur n'envoie jamais
+  cette partie au serveur qui héberge la page.
+  iPhone : « Installer » copie « RELEVE-NIP:XXXXXX » ; l'app le lit à son premier départ.
+  Android : le NIP voyage avec le lien Google Play (referrer) ; il est aussi copié, au cas où.
+-->
+<style>
+:root{--creme:#FFF4E6;--nuit:#121A38;--gris:#4A4766;--doux:rgba(18,26,56,.06);--peche:#FFE3C2}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--creme);color:var(--nuit)}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{min-height:100vh;min-height:100dvh;max-width:460px;margin:0 auto;display:flex;flex-direction:column;
+  padding:calc(48px + env(safe-area-inset-top)) 22px calc(30px + env(safe-area-inset-bottom))}
+@keyframes monte{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.haut,.bas{animation:monte .55s cubic-bezier(.2,.9,.3,1) both}
+.bas{animation-delay:.12s}
+.haut{display:flex;flex-direction:column;gap:16px;padding:0 4px}
+.icone{width:84px;height:84px;border-radius:20px;box-shadow:0 10px 30px rgba(18,26,56,.18)}
+h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035em}
+.sous{margin:0;font-size:17px;line-height:1.45;color:var(--gris)}
+.bas{margin-top:auto;padding-top:36px;display:flex;flex-direction:column;gap:14px}
+.bouton{display:flex;align-items:center;justify-content:center;min-height:60px;padding:0 20px;border-radius:30px;border:0;
+  background:var(--nuit);color:var(--creme);font:inherit;font-size:18px;font-weight:800;text-decoration:none;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:transform .12s}
+.bouton:active{transform:scale(.97)}
+.bouton[aria-disabled="true"]{background:rgba(18,26,56,.12);color:#8B88A3;cursor:default}
+.bouton[aria-disabled="true"]:active{transform:none}
+.carte{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;background:var(--doux);font-size:15px;line-height:1.4}
+.carte svg{flex:none}
+.nip{text-align:center;font-size:14px;line-height:1.5;color:var(--gris)}
+.nip b{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:16px;letter-spacing:.08em;color:var(--nuit)}
+.pied{text-align:center;font-size:13px}
+.pied a{color:var(--gris)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <div class="haut">
+    <img class="icone" src="apple-touch-icon.png" alt="Icône de Relève" width="84" height="84">
+    <h1 id="titre">Un collègue t'invite dans Relève.</h1>
+    <p class="sous" id="sous">L'horaire des navettes de relève, toujours à portée de main.</p>
+  </div>
+
+  <div class="bas">
+    <a class="bouton" id="installer" href="#" role="button">Installer Relève</a>
+    <div class="carte" id="carte">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121A38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"></path></svg>
+      <span id="carte-texte">Ton billet te suit jusque dans l'app : tu n'auras rien à taper.</span>
+    </div>
+    <p class="nip" id="nip" hidden>Si l'app te le demande, ton NIP est <b id="nip-valeur"></b>.<br>Il ne fonctionne qu'une fois.</p>
+    <p class="pied"><a href="confidentialite.html">Confidentialité</a></p>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ——— Liens des magasins (à remplir quand ils existeront) ———
+  // iPhone : l'adresse de la fiche App Store, sinon le lien public TestFlight pendant les tests.
+  var APP_STORE = null;   // ex. 'https://apps.apple.com/ca/app/releve/id0000000000'
+  var TESTFLIGHT = null;  // ex. 'https://testflight.apple.com/join/XXXXXXXX'
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.freeed.releve';
+
+  // Même alphabet que les codes du serveur : ni I, L, O, 0 ni 1 (trop faciles à confondre).
+  var ALPHABET = /^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{6}$/;
+
+  function lireNip() {
+    var brut = decodeURIComponent((location.hash || '').slice(1)).toUpperCase().replace(/[^A-Z0-9]/g, '');
+    return ALPHABET.test(brut) ? brut : null;
+  }
+
+  var ua = navigator.userAgent || '';
+  var iphone = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(ua);
+
+  var nip = lireNip();
+  var bouton = document.getElementById('installer');
+  var titre = document.getElementById('titre');
+  var carteTexte = document.getElementById('carte-texte');
+
+  if (!nip) {
+    titre.textContent = 'Relève s’installe sur invitation.';
+    carteTexte.textContent = 'Un collègue Ambassadeur te remettra ton billet. Tu pourras aussi taper ton code dans l’app.';
+  } else {
+    document.getElementById('nip-valeur').textContent = nip.slice(0, 3) + '-' + nip.slice(3);
+  }
+
+  var lien = null;
+  if (iphone) {
+    lien = APP_STORE || TESTFLIGHT;
+    if (APP_STORE) bouton.textContent = 'Installer depuis l’App Store';
+    else if (TESTFLIGHT) bouton.textContent = 'Installer avec TestFlight';
+  } else if (android) {
+    lien = PLAY + (nip ? '&referrer=' + encodeURIComponent('nip=' + nip) : '');
+    bouton.textContent = 'Installer depuis Google Play';
+  } else {
+    titre.textContent = nip ? 'Ouvre ce lien sur ton téléphone.' : titre.textContent;
+    document.getElementById('sous').textContent = 'Relève s’installe sur un iPhone ou un téléphone Android.';
+    document.getElementById('carte').hidden = true;
+  }
+
+  if (!lien) {
+    if (iphone) bouton.textContent = 'Bientôt sur l’App Store';
+    if (!iphone && !android) bouton.hidden = true;
+    bouton.setAttribute('aria-disabled', 'true');
+    bouton.removeAttribute('href');
+    if (nip && iphone) document.getElementById('nip').hidden = false;
+    return;
+  }
+  bouton.href = lien;
+
+  function copier(texte) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(texte);
+    } catch (e) { /* on passe au plan B */ }
+    return new Promise(function (ok, echec) {
+      var zone = document.createElement('textarea');
+      zone.value = texte;
+      zone.setAttribute('readonly', '');
+      zone.style.position = 'fixed';
+      zone.style.opacity = '0';
+      document.body.appendChild(zone);
+      zone.select();
+      var reussi = false;
+      try { reussi = document.execCommand('copy'); } catch (e) { reussi = false; }
+      document.body.removeChild(zone);
+      reussi ? ok() : echec();
+    });
+  }
+
+  bouton.addEventListener('click', function (e) {
+    if (!nip) return; // pas de billet : le lien s'ouvre normalement
+    e.preventDefault();
+    var partir = function () { location.href = lien; };
+    var delai = setTimeout(partir, 900); // le magasin s'ouvre même si la copie tarde
+    copier('RELEVE-NIP:' + nip).then(
+      function () { clearTimeout(delai); partir(); },
+      function () {
+        // Copie refusée : on montre le NIP, l'app le demandera au besoin.
+        clearTimeout(delai);
+        document.getElementById('nip').hidden = false;
+        carteTexte.textContent = 'Garde ton NIP sous la main : l’app te le demandera.';
+        setTimeout(partir, 2500);
+      }
+    );
+  });
+})();
+</script>
+</body>
+</html>
