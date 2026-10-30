@@ -53,9 +53,11 @@ a{color:var(--nuit)}
 
   <h2>Ton code d'activation (ton billet)</h2>
   <ul>
-    <li>L'activation est enregistrée dans ton téléphone. Sur le serveur, seuls l'état du code (en attente, utilisé, expiré ou révoqué) et ses dates de création et d'activation sont conservés, sans lien avec ton identité ni avec ton téléphone.</li>
-    <li>Quand un collègue Ambassadeur crée ton billet, le serveur relie ton code au code de cet Ambassadeur, pour que chaque accès reste traçable. Aucun prénom n'y est enregistré.</li>
+    <li>L'activation est enregistrée dans ton téléphone. Sur le serveur, seuls l'état du code (en attente, utilisé, expiré ou révoqué), ses dates de création et d'activation et son statut (Chauffeur, Ambassadeur ou Concepteur) sont conservés, sans lien avec ton identité ni avec ton téléphone.</li>
+    <li>Les Ambassadeurs créent eux-mêmes, dans l'app, les billets des collègues qu'ils connaissent personnellement, au plus 5 en attente à la fois. Quand un Ambassadeur crée ton billet, le serveur relie ton code au code de cet Ambassadeur (le garant), pour que chaque accès reste traçable. Ce lien ne s'efface jamais, même si l'Ambassadeur perd son statut. Aucun prénom n'y est enregistré.</li>
     <li>L'Ambassadeur et le Concepteur peuvent noter à qui ils ont remis un billet (un prénom ou des initiales). Cette note reste dans leur propre téléphone : elle n'est jamais transmise au serveur.</li>
+    <li>Ton téléphone garde la version des conditions que tu as acceptée, la date et une empreinte de ton code (jamais le code lui-même). C'est ce qui permet de te présenter les conditions de nouveau chaque fois que tu actives un nouveau code. Rien de cela n'est transmis au serveur.</li>
+    <li>Si tu supprimes vraiment l'app (et pas seulement son icône), ton code ne peut plus servir : si tu la réinstalles, elle l'efface de ton téléphone et te demande un nouveau code.</li>
   </ul>
 
   <h2>La page d'installation</h2>
@@ -70,10 +72,11 @@ a{color:var(--nuit)}
   <p>Un signalement indique si une navette est passée en avance, à l'heure ou en retard. Il ne contient que le trajet, l'arrêt, l'heure prévue du passage, la date et ton choix. Aucun nom, matricule, identifiant de téléphone, position ni heure d'envoi n'est conservé.</p>
 
   <h2>Notifications</h2>
-  <p>Seul le téléphone du Concepteur reçoit des notifications venant du serveur (par exemple, quand un nouveau collègue active l'app). Son adresse de notification est la seule enregistrée. Aucun autre téléphone n'en a une sur le serveur.</p>
+  <p>Seul le téléphone du Concepteur reçoit des notifications venant du serveur (par exemple, quand un nouveau collègue active l'app). Son adresse de notification est la seule enregistrée. Aucun autre téléphone n'en a une sur le serveur. Ces notifications ne contiennent aucun prénom, seulement la fin du code de l'Ambassadeur (par exemple « •••-8RT »), et passent par les services d'Expo et d'Apple.</p>
 
   <h2>Période d'essai</h2>
-  <p>Avant le lancement, Relève est mise à l'essai par TestFlight (Apple) et par un test fermé sur Google Play. Pour le test fermé sur Android, le Concepteur doit inscrire l'adresse du compte Google de chaque personne invitée sur une liste privée de testeurs. Cette adresse est retirée à la fin de la période d'essai, ou plus tôt si l'accès prend fin. Les Testeurs et les Ambassadeurs acceptent d'être joints par le Concepteur : leurs coordonnées restent chez lui, jamais dans l'app ni sur le serveur.</p>
+  <p>Avant le lancement, Relève est mise à l'essai par les Testeurs, par TestFlight (Apple) et par un test fermé sur Google Play. Pour le test fermé sur Android, le Concepteur doit inscrire l'adresse du compte Google de chaque Testeur sur une liste privée de testeurs. Ces adresses ne servent que pendant la période d'essai : elles sont retirées à la fin de celle-ci, ou plus tôt si l'accès prend fin, et aucune adresse Google n'est demandée ensuite.</p>
+  <p>Le Concepteur ne joint un Testeur ou un Ambassadeur que s'il y a consenti à part, et non en acceptant les conditions d'utilisation. Ce consentement est demandé quand la personne lui remet elle-même ses coordonnées, en personne ou par écrit, pour une fin précise (les tests, ou le rôle d'Ambassadeur). Elle peut le retirer en tout temps ; elle est alors retirée de la liste des Testeurs ou des Ambassadeurs. Ses coordonnées restent chez le Concepteur (ses contacts personnels), jamais dans l'app ni sur le serveur.</p>
 
   <h2>Hébergement</h2>
   <ul>
@@ -86,9 +89,11 @@ a{color:var(--nuit)}
   <ul>
     <li><strong>Signalements anonymes :</strong> sans limite de durée. Ils ne sont liés à personne et servent à dégager des tendances.</li>
     <li><strong>Tentatives ratées d'activation :</strong> seulement le genre de tentative et le moment, sans aucun identifiant. Elles sont effacées après une journée.</li>
+    <li><strong>Codes d'activation :</strong> conservés sans limite de durée, avec leur état (en attente, utilisé, expiré ou révoqué) et leurs dates. Ils ne sont liés ni à ton identité ni à ton téléphone. Pour un code créé par un Ambassadeur, le lien avec le code de cet Ambassadeur est aussi gardé, pour que chaque accès reste traçable.</li>
     <li><strong>Adresse du compte Google d'un testeur Android :</strong> retirée de la liste privée à la fin de la période d'essai, ou plus tôt si l'accès prend fin.</li>
     <li><strong>Courriels que tu envoies au Concepteur :</strong> supprimés dans les 30 jours suivant la réponse.</li>
-    <li><strong>Dans ton téléphone :</strong> ton activation et tes réglages y restent jusqu'à ce que tu désinstalles l'app.</li>
+    <li><strong>Coordonnées d'un Testeur ou d'un Ambassadeur :</strong> gardées par le Concepteur dans ses contacts personnels seulement, pour la fin précise à laquelle la personne a consenti (les tests, ou le rôle d'Ambassadeur), jusqu'à ce qu'elle retire son consentement.</li>
+    <li><strong>Dans ton téléphone :</strong> ton activation, ton acceptation des conditions et tes réglages y restent jusqu'à ce que tu supprimes l'app. Si tu la réinstalles, l'ancien code est effacé.</li>
   </ul>
 
   <h2>Tes droits et l'effacement</h2>
@@ -105,7 +110,7 @@ a{color:var(--nuit)}
   <h2>Nous joindre</h2>
   <p>Personne responsable de la protection des renseignements personnels : le Concepteur, Frédérick Thibeault (<a href="mailto:fred.thibeault@proton.me">fred.thibeault@proton.me</a>). Les codes d'activation ne se demandent jamais par courriel.</p>
 
-  <p class="date">Mise à jour le 19 octobre 2026</p>
+  <p class="date">Mise à jour le 30 octobre 2026</p>
 </main>
 </body>
 </html>
