@@ -35,7 +35,7 @@ a{color:var(--nuit)}
     <h1>Confidentialité</h1>
   </header>
 
-  <p class="resume">Relève ne te demande ni ton nom, ni ton matricule, ni ton courriel. Ta position reste dans ton téléphone. Aucune publicité, aucun traceur, aucune vente ni aucun partage de données.</p>
+  <p class="resume">Dans l'app, Relève ne te demande ni ton nom, ni ton matricule, ni ton courriel. Ta position reste dans ton téléphone. Aucune publicité, aucun traceur, aucune vente ni aucun partage de données.</p>
 
   <p>Relève affiche l'horaire des navettes de relève. C'est un projet personnel et indépendant, offert gratuitement et sur invitation seulement. L'app est conçue pour recueillir le moins de renseignements personnels possible et vise à respecter la Loi sur la protection des renseignements personnels dans le secteur privé du Québec (Loi 25).</p>
 
@@ -54,8 +54,9 @@ a{color:var(--nuit)}
   <h2>Ton code d'activation (ton billet)</h2>
   <ul>
     <li>L'activation est enregistrée dans ton téléphone. Sur le serveur, seuls l'état du code (en attente, utilisé, expiré ou révoqué), ses dates de création et d'activation et son statut (Chauffeur, Ambassadeur ou Concepteur) sont conservés, sans lien avec ton identité ni avec ton téléphone.</li>
-    <li>Les Ambassadeurs créent eux-mêmes, dans l'app, les billets des collègues qu'ils connaissent personnellement, au plus 5 en attente à la fois. Quand un Ambassadeur crée ton billet, le serveur relie ton code au code de cet Ambassadeur (le garant), pour que chaque accès reste traçable. Ce lien ne s'efface jamais, même si l'Ambassadeur perd son statut. Aucun prénom n'y est enregistré.</li>
-    <li>L'Ambassadeur et le Concepteur peuvent noter à qui ils ont remis un billet (un prénom ou des initiales). Cette note reste dans leur propre téléphone : elle n'est jamais transmise au serveur.</li>
+    <li>Les Ambassadeurs créent eux-mêmes, dans l'app, les billets des collègues qu'ils connaissent personnellement, au plus 5 en attente à la fois. Quand ton billet est créé dans l'app, par un Ambassadeur ou par le Concepteur, le serveur relie ton code au code de la personne qui l'a créé (le garant), pour que chaque accès reste traçable. Ce lien ne s'efface jamais, même si l'Ambassadeur perd son statut. Aucun prénom n'y est enregistré.</li>
+    <li>L'Ambassadeur et le Concepteur peuvent noter à qui ils ont remis un billet ou envoyé un code (un prénom ou des initiales). Cette note reste dans leur propre téléphone : elle n'est jamais transmise au serveur.</li>
+    <li>Le Concepteur peut aussi t'envoyer ton code par message (texto, messagerie ou courriel). Ce message, code compris, passe par le service choisi, selon ses propres règles, et peut y rester. Le Concepteur voit ce que ce service lui montre de toi (ton nom ou ton numéro, par exemple) et ce que tu lui réponds. Rien de cela n'entre dans l'app ni sur le serveur.</li>
     <li>Ton téléphone garde la version des conditions que tu as acceptée, la date et une empreinte de ton code (jamais le code lui-même). C'est ce qui permet de te présenter les conditions de nouveau chaque fois que tu actives un nouveau code. Rien de cela n'est transmis au serveur.</li>
     <li>Si tu supprimes vraiment l'app (et pas seulement son icône), ton code ne peut plus servir : si tu la réinstalles, elle l'efface de ton téléphone et te demande un nouveau code.</li>
   </ul>
@@ -63,8 +64,8 @@ a{color:var(--nuit)}
   <h2>La page d'installation</h2>
   <ul>
     <li>La page du billet n'utilise aucun traceur, aucune police ni aucun script venant d'ailleurs.</li>
-    <li>Ton NIP est placé après le « # » de l'adresse : ton navigateur n'envoie jamais cette partie au serveur qui héberge la page.</li>
-    <li>Sur iPhone, toucher « Installer » copie ton NIP dans le presse-papiers. Au premier départ, l'app le lit seulement si tu touches « Coller », puis vide le presse-papiers.</li>
+    <li>Ton code est placé après le « # » de l'adresse : ton navigateur n'envoie jamais cette partie au serveur qui héberge la page. Si ce lien t'arrive par message, le service de messagerie, lui, a le message en entier.</li>
+    <li>Sur iPhone, toucher « Installer » copie ton NIP dans le presse-papiers. Au premier départ, l'app lit le presse-papiers seulement si tu touches « Coller ». Si elle y reconnaît ton code, elle le vide ; sinon, elle n'y touche pas.</li>
     <li>Sur Android, ton NIP voyage avec le lien Google Play, qui le remet à l'app quand elle s'installe.</li>
   </ul>
 
@@ -76,7 +77,8 @@ a{color:var(--nuit)}
 
   <h2>Période d'essai</h2>
   <p>Avant le lancement, Relève est mise à l'essai par les Testeurs, par TestFlight (Apple) et par un test fermé sur Google Play. Pour le test fermé sur Android, le Concepteur doit inscrire l'adresse du compte Google de chaque Testeur sur une liste privée de testeurs. Ces adresses ne servent que pendant la période d'essai : elles sont retirées à la fin de celle-ci, ou plus tôt si l'accès prend fin, et aucune adresse Google n'est demandée ensuite.</p>
-  <p>Le Concepteur ne joint un Testeur ou un Ambassadeur que s'il y a consenti à part, et non en acceptant les conditions d'utilisation. Ce consentement est demandé quand la personne lui remet elle-même ses coordonnées, en personne ou par écrit, pour une fin précise (les tests, ou le rôle d'Ambassadeur). Elle peut le retirer en tout temps ; elle est alors retirée de la liste des Testeurs ou des Ambassadeurs. Ses coordonnées restent chez le Concepteur (ses contacts personnels), jamais dans l'app ni sur le serveur.</p>
+  <p>Le Concepteur ne joint un Testeur ou un Ambassadeur que s'il y a consenti à part, et non en acceptant les conditions d'utilisation. Ce consentement est demandé quand la personne lui remet elle-même ses coordonnées, en personne ou par écrit, pour une fin précise (les tests, ou le rôle d'Ambassadeur). Elle peut le retirer en tout temps ; elle est alors retirée de la liste des Testeurs ou des Ambassadeurs. Ses coordonnées restent chez le Concepteur (ses contacts personnels et, s'il t'écrit par une messagerie, cette messagerie aussi), jamais dans l'app ni sur le serveur.</p>
+  <p><strong>Tes retours pendant les tests</strong> passent par TestFlight (Apple) ou par le groupe privé des testeurs et Messenger (Meta), selon leurs propres règles. Dans le groupe, les testeurs se voient entre eux.</p>
 
   <h2>Hébergement</h2>
   <ul>
@@ -91,6 +93,7 @@ a{color:var(--nuit)}
     <li><strong>Signalements anonymes :</strong> sans limite de durée. Ils ne sont liés à personne et servent à dégager des tendances.</li>
     <li><strong>Tentatives ratées d'activation :</strong> seulement le genre de tentative et le moment, sans aucun identifiant. Elles sont effacées après une journée.</li>
     <li><strong>Codes d'activation :</strong> conservés sans limite de durée, avec leur état (en attente, utilisé, expiré ou révoqué) et leurs dates. Ils ne sont liés ni à ton identité ni à ton téléphone. Pour un code créé par un Ambassadeur, le lien avec le code de cet Ambassadeur est aussi gardé, pour que chaque accès reste traçable.</li>
+    <li><strong>Message qui contient ton code :</strong> gardé par le service de messagerie, selon ses propres règles. Le code, lui, ne sert plus une fois activé, et expire 7 jours après sa création s'il ne sert pas.</li>
     <li><strong>Adresse du compte Google d'un testeur Android :</strong> retirée de la liste privée à la fin de la période d'essai, ou plus tôt si l'accès prend fin.</li>
     <li><strong>Courriels que tu envoies au Concepteur :</strong> supprimés dans les 30 jours suivant la réponse.</li>
     <li><strong>Coordonnées d'un Testeur ou d'un Ambassadeur :</strong> gardées par le Concepteur dans ses contacts personnels seulement, pour la fin précise à laquelle la personne a consenti (les tests, ou le rôle d'Ambassadeur), jusqu'à ce qu'elle retire son consentement.</li>
@@ -98,7 +101,7 @@ a{color:var(--nuit)}
   </ul>
 
   <h2>Tes droits et l'effacement</h2>
-  <p>La Loi 25 te donne le droit de savoir quels renseignements une organisation détient sur toi, de les faire corriger, de retirer ton consentement et de demander qu'ils soient effacés. Comme rien sur le serveur ne te relie à toi (ni nom, ni identifiant de téléphone), il n'y a pas de profil à consulter ni à effacer : les signalements et l'état des codes sont anonymes.</p>
+  <p>La Loi 25 te donne le droit de savoir quels renseignements une organisation détient sur toi, de les faire corriger, de retirer ton consentement et de demander qu'ils soient effacés. Comme rien sur le serveur ne te relie à toi (ni nom, ni identifiant de téléphone), il n'y a pas de profil à consulter ni à effacer : les signalements sont anonymes. L'état d'un code n'est relié à toi que par la note privée du Concepteur ou par le message qui te l'a apporté : tu peux lui demander de les effacer.</p>
   <ul>
     <li>Pour effacer ce que l'app garde dans ton téléphone : désinstalle-la.</li>
     <li>Pour faire retirer ton adresse courriel, l'adresse de ton compte Google de testeur ou ton accès : écris au Concepteur.</li>
@@ -109,9 +112,9 @@ a{color:var(--nuit)}
   <p>Si tu écris au Concepteur, ton adresse et ton message sont reçus dans une boîte Proton Mail, hébergée à l'extérieur du Canada, en Europe. Ils servent uniquement à te répondre, ne sont jamais versés dans l'app et sont supprimés dans les 30 jours suivant la réponse.</p>
 
   <h2>Nous joindre</h2>
-  <p>Personne responsable de la protection des renseignements personnels : le Concepteur, Frédérick Thibeault (<a href="mailto:fred.thibeault@proton.me">fred.thibeault@proton.me</a>). Les codes d'activation ne se demandent jamais par courriel.</p>
+  <p>Personne responsable de la protection des renseignements personnels : le Concepteur, Frédérick Thibeault (<a href="mailto:fred.thibeault@proton.me">fred.thibeault@proton.me</a>). Cette adresse sert à tes questions. Écrire ne donne pas de code d'activation.</p>
 
-  <p class="date">Mise à jour le 2 novembre 2026</p>
+  <p class="date">Mise à jour le 5 novembre 2026</p>
 </main>
 </body>
 </html>

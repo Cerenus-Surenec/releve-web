@@ -59,9 +59,9 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
     <a class="bouton" id="installer" href="#" role="button">Installer Relève</a>
     <div class="carte" id="carte">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121A38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"></path></svg>
-      <span id="carte-texte">Ton billet te suit jusque dans l'app : tu n'auras rien à taper.</span>
+      <span id="carte-texte">En général, ton billet te suit jusque dans l'app. Sinon, tape le code ci-dessous.</span>
     </div>
-    <p class="nip" id="nip" hidden>Si l'app te le demande, ton NIP est <b id="nip-valeur"></b>.<br>Il ne fonctionne qu'une fois.</p>
+    <p class="nip" id="nip" hidden>Si l'app te le demande, ton code est <b id="nip-valeur"></b>.<br>Il ne fonctionne qu'une fois.</p>
     <p class="pied"><a href="confidentialite.html">Confidentialité</a></p>
   </div>
 </main>
@@ -95,9 +95,12 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
 
   if (!nip) {
     titre.textContent = 'Relève s’installe sur invitation.';
-    carteTexte.textContent = 'Un collègue Ambassadeur te remettra ton billet. Tu pourras aussi taper ton code dans l’app.';
+    carteTexte.textContent = 'Ton code te viendra de l’administrateur de l’app ou d’un collègue Ambassadeur. Tu pourras aussi le taper dans l’app.';
   } else {
     document.getElementById('nip-valeur').textContent = nip.slice(0, 3) + '-' + nip.slice(3);
+    // Conditions 1.6 : le code est toujours écrit sous la carte, sur iPhone comme sur Android (la copie
+    // peut échouer, par exemple dans le navigateur de Messenger ; le référent peut se perdre en route).
+    if (iphone || android) document.getElementById('nip').hidden = false;
   }
 
   var lien = null;
@@ -154,7 +157,7 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
         // Copie refusée : on montre le NIP, l'app le demandera au besoin.
         clearTimeout(delai);
         document.getElementById('nip').hidden = false;
-        carteTexte.textContent = 'Garde ton NIP sous la main : l’app te le demandera.';
+        carteTexte.textContent = 'Garde ton code sous la main : l’app te le demandera.';
         setTimeout(partir, 2500);
       }
     );
