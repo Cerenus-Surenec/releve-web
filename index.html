@@ -10,12 +10,32 @@
 <link rel="icon" href="icone.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <!--
+  Aperçu du lien dans Messages, Messenger, etc. (25-M2, partie B du billet) : le titre, la phrase et l'icône,
+  hébergée ici même. La messagerie ne reçoit jamais le code : il est après le « # », qu'aucun navigateur
+  ni aucun aperçu n'envoie au serveur.
+-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Relève">
+<meta property="og:title" content="Ton billet pour Relève">
+<meta property="og:description" content="L'horaire des navettes de relève. Ouvre ce lien sur ton téléphone.">
+<meta property="og:url" content="https://cerenus-surenec.github.io/releve-web/">
+<meta property="og:image" content="https://cerenus-surenec.github.io/releve-web/icone.png">
+<meta property="og:image:width" content="192">
+<meta property="og:image:height" content="192">
+<meta property="og:image:alt" content="Icône de Relève">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary">
+<meta name="description" content="L'horaire des navettes de relève. Ouvre ce lien sur ton téléphone.">
+<!--
   Page d'installation de Relève (le code QR du billet y mène).
   Aucune police, aucun script ni aucune image venant d'ailleurs, aucun traceur : la page ne
   parle à personne. Le NIP est après le « # » de l'adresse : un navigateur n'envoie jamais
   cette partie au serveur qui héberge la page.
   iPhone : « Installer » copie « RELEVE-NIP:XXXXXX » ; l'app le lit à son premier départ.
   Android : le NIP voyage avec le lien Google Play (referrer) ; il est aussi copié, au cas où.
+  Partie B (25-P1 à 25-P11, textes approuvés le 18 novembre 2026) : dans le navigateur intégré d'une
+  messagerie (Messenger, Facebook, Instagram), un bandeau dit d'ouvrir le lien dans Safari ou dans le
+  navigateur ; sur Android, un second bouton ouvre Google Play directement.
 -->
 <style>
 :root{--creme:#FFF4E6;--nuit:#121A38;--gris:#4A4766;--doux:rgba(18,26,56,.06);--peche:#FFE3C2}
@@ -43,12 +63,21 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
 .nip{text-align:center;font-size:14px;line-height:1.5;color:var(--gris)}
 .nip b{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:16px;letter-spacing:.08em;color:var(--nuit)}
 .pied{text-align:center;font-size:13px}
+.limite{margin:0;text-align:center;font-size:14px;line-height:1.5;color:var(--gris)}
+.bandeau{margin:0 0 22px;padding:14px 16px;border-radius:18px;background:var(--nuit);color:var(--creme);font-size:15px;line-height:1.45}
+.bandeau b{display:block;margin-bottom:4px;font-size:17px}
+.secours{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.secours p{margin:0;font-size:14px;line-height:1.5;color:var(--gris)}
+.bouton-contour{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:30px;
+  border:1.5px solid rgba(18,26,56,.35);color:var(--nuit);font-size:16px;font-weight:700;text-decoration:none;
+  -webkit-tap-highlight-color:transparent}
 .pied a{color:var(--gris)}
 [hidden]{display:none!important}
 </style>
 </head>
 <body>
 <main>
+  <div class="bandeau" id="bandeau" role="note" hidden><b id="bandeau-titre"></b><span id="bandeau-texte"></span></div>
   <div class="haut">
     <img class="icone" src="apple-touch-icon.png" alt="Icône de Relève" width="84" height="84">
     <h1 id="titre">Un collègue t'invite dans Relève.</h1>
@@ -61,7 +90,13 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121A38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"></path></svg>
       <span id="carte-texte">En général, ton billet te suit jusque dans l'app. Sinon, tape le code ci-dessous.</span>
     </div>
-    <p class="nip" id="nip" hidden>Si l'app te le demande, ton code est <b id="nip-valeur"></b>.<br>Il ne fonctionne qu'une fois.</p>
+    <p class="nip" id="nip" hidden><span id="nip-avant">Si l'app te le demande, ton code est</span> <b id="nip-valeur"></b><span id="nip-apres">. Il ne fonctionne qu'une fois, et seulement pour toi.</span></p>
+    <p class="limite" id="limite" hidden>Ce lien est pour toi seulement. Il expire à l'heure écrite dans ton message.</p>
+    <div class="secours" id="secours" hidden>
+      <p>Google Play ne s'ouvre pas ?</p>
+      <a class="bouton-contour" id="play-direct" href="#">Ouvrir Google Play directement</a>
+      <p>L'app te demandera peut-être ton code.</p>
+    </div>
     <p class="pied"><a href="confidentialite.html">Confidentialité</a></p>
   </div>
 </main>
@@ -87,20 +122,40 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
   var ua = navigator.userAgent || '';
   var iphone = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var android = /Android/.test(ua);
+  // Le navigateur intégré d'une messagerie (Messenger, Facebook, Instagram) : le magasin risque de ne pas s'ouvrir.
+  var integre = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
 
   var nip = lireNip();
   var bouton = document.getElementById('installer');
   var titre = document.getElementById('titre');
   var carteTexte = document.getElementById('carte-texte');
 
+  // 25-P1 et 25-P2 : le bandeau du navigateur intégré, en haut de la page.
+  if (integre && (iphone || android)) {
+    document.getElementById('bandeau-titre').textContent = iphone ? 'Ouvre ce lien dans Safari.' : 'Ouvre ce lien dans ton navigateur.';
+    document.getElementById('bandeau-texte').textContent = iphone
+      ? "Ici, l'App Store risque de ne pas s'ouvrir. Touche les trois points en haut, puis choisis d'ouvrir dans Safari."
+      : "Ici, Google Play risque de ne pas s'ouvrir. Touche les trois points en haut, puis choisis d'ouvrir dans ton navigateur.";
+    document.getElementById('bandeau').hidden = false;
+  }
+
   if (!nip) {
+    // 25-P11 : la page sans code.
     titre.textContent = 'Relève s’installe sur invitation.';
-    carteTexte.textContent = 'Ton code te viendra de l’administrateur de l’app ou d’un collègue Ambassadeur. Tu pourras aussi le taper dans l’app.';
+    carteTexte.textContent = "Relève est sur invitation. Ton code te viendra d'un collègue qui a Relève ou de l'administrateur de l'app. Tu le taperas dans l'app une fois installée.";
   } else {
     document.getElementById('nip-valeur').textContent = nip.slice(0, 3) + '-' + nip.slice(3);
-    // Conditions 1.6 : le code est toujours écrit sous la carte, sur iPhone comme sur Android (la copie
-    // peut échouer, par exemple dans le navigateur de Messenger ; le référent peut se perdre en route).
-    if (iphone || android) document.getElementById('nip').hidden = false;
+    // Le code est toujours écrit sous la carte, sur iPhone comme sur Android (la copie peut échouer, par
+    // exemple dans le navigateur de Messenger ; le référent peut se perdre en route).
+    if (android) {
+      // 25-P7 (K2 a)
+      document.getElementById('nip-avant').textContent = 'Il devrait se remplir tout seul. Sinon, ton code est';
+      document.getElementById('nip-apres').textContent = '.';
+    }
+    if (iphone || android) {
+      document.getElementById('nip').hidden = false;
+      document.getElementById('limite').hidden = false; // 25-P8
+    }
   }
 
   var lien = null;
@@ -111,10 +166,18 @@ h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;letter-spacing:-.035
   } else if (android) {
     lien = PLAY + (nip ? '&referrer=' + encodeURIComponent('nip=' + nip) : '');
     bouton.textContent = 'Installer depuis Google Play';
+    if (nip) {
+      // 25-P9 : Google Play ouvert directement, sans passer par le navigateur (le code peut alors se perdre).
+      document.getElementById('play-direct').href =
+        'intent://details?id=com.freeed.releve&referrer=' + encodeURIComponent('nip=' + nip) +
+        '#Intent;scheme=market;package=com.android.vending;end';
+      document.getElementById('secours').hidden = false;
+    }
   } else {
-    titre.textContent = nip ? 'Ouvre ce lien sur ton téléphone.' : titre.textContent;
+    // 25-P10 : sur un ordinateur.
     document.getElementById('sous').textContent = 'Relève s’installe sur un iPhone ou un téléphone Android.';
-    document.getElementById('carte').hidden = true;
+    if (nip) carteTexte.textContent = 'Ouvre ce même message sur ton téléphone et touche le lien.';
+    else document.getElementById('carte').hidden = true;
   }
 
   if (!lien) {
