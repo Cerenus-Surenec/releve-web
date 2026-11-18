@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#FFF4E6">
+<title>Relève</title>
+<link rel="icon" href="../icone.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<!--
+  Le lien « Ambassadeur » (moment Ambassadeur, M1, 18 novembre 2026).
+  Sur un téléphone où Relève est installée, ce lien n'arrive jamais ici : l'iPhone et Android l'ouvrent
+  directement dans Relève (liens vérifiés, fichiers /.well-known/ du dépôt Cerenus-Surenec.github.io).
+  Sinon (Relève pas installée, ordinateur, navigateur d'une messagerie), cette page renvoie tout de suite vers
+  la page d'installation habituelle, SANS le jeton ni le mot : elle ne lit pas ce qui suit le « # », ne
+  l'envoie à personne, et l'efface de l'adresse et de l'historique avant de partir.
+  Charger cette page (ou son aperçu dans une messagerie) ne consomme rien : seul le toucher sur « Ouvrir »,
+  dans Relève, donne le statut. Aucune ressource externe, aucun traceur.
+-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Relève">
+<meta property="og:title" content="Un mot pour toi">
+<meta property="og:description" content="Ouvre ce lien sur ton téléphone, dans Relève.">
+<meta property="og:url" content="https://cerenus-surenec.github.io/releve-web/ambassadeur">
+<meta property="og:image" content="https://cerenus-surenec.github.io/releve-web/icone.png">
+<meta property="og:image:width" content="192">
+<meta property="og:image:height" content="192">
+<meta property="og:image:alt" content="Icône de Relève">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary">
+<script>
+  // Efface le « # … » (jeton et mot) de l'adresse et de l'historique, puis va à la page d'installation.
+  try { history.replaceState(null, '', location.pathname); } catch (e) {}
+  location.replace('../');
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=../"></noscript>
+</head>
+<body style="margin:0;background:#FFF4E6"></body>
+</html>
