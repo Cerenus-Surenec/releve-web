@@ -9,7 +9,10 @@
 <link rel="icon" href="icone.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <!-- Politique de confidentialité de Relève (adresse donnée aux magasins). Reprend la section 8
-     des conditions d'utilisation ; toute modification doit suivre celles-ci. -->
+     des conditions d'utilisation ; toute modification doit suivre celles-ci.
+     Version des conditions 1.9 : P19-1 à P19-16, approuvés le 18 novembre 2026 (11 h 17 et 11 h 29).
+     « Mise à jour le » = la date de la fusion dans main : à corriger si elle n'a pas lieu le 18 novembre.
+     L'ancre #effacement est l'adresse donnée à Google pour la suppression : ne pas la renommer. -->
 <style>
 :root{--creme:#FFF4E6;--nuit:#121A38;--gris:#4A4766}
 *{box-sizing:border-box}
@@ -37,26 +40,29 @@ a{color:var(--nuit)}
 
   <p class="resume">Dans l'app, Relève ne te demande ni ton nom, ni ton matricule, ni ton courriel. Ta position reste dans ton téléphone. Aucune publicité, aucun traceur, aucune vente ni aucun partage de données.</p>
 
+  <p>Pour faire effacer ton code : <a href="#effacement">Tes droits et l'effacement</a>.</p>
+
   <p>Relève affiche l'horaire des navettes de relève. C'est un projet personnel et indépendant, offert gratuitement et sur invitation seulement. L'app est conçue pour recueillir le moins de renseignements personnels possible et vise à respecter la Loi sur la protection des renseignements personnels dans le secteur privé du Québec (Loi 25).</p>
 
   <h2>À qui s'adresse Relève</h2>
   <p>Relève s'adresse aux adultes qui ont droit à la navette, surtout aux chauffeurs. Elle n'est pas destinée aux enfants et ne recueille sciemment aucun renseignement à leur sujet.</p>
 
   <h2>Aucun compte</h2>
-  <p>On ne te demande jamais ton nom, ton matricule, ton courriel ni ton numéro de téléphone dans l'app.</p>
+  <p>On ne te demande jamais ton nom, ton matricule, ton courriel ni ton numéro de téléphone dans l'app. Ton code d'activation n'est pas un compte : il ne contient rien sur toi, et tu peux le faire effacer (voir <a href="#effacement">Tes droits et l'effacement</a>).</p>
 
   <h2>Ta position</h2>
   <p>Ta position sert seulement, dans ton téléphone, à trouver le point de relève le plus proche, à t'indiquer à pied de quel côté il se trouve et à vérifier que tu es près de l'arrêt pour signaler un passage. Pour afficher la flèche qui pointe vers le point de relève, l'app lit aussi la boussole du téléphone, seulement pendant que l'écran principal est ouvert. Ni ta position, ni ta vitesse, ni l'orientation de ton téléphone ne sont jamais transmises ni enregistrées, et l'app ne demande jamais ta position en arrière-plan. Tu peux retirer cette permission en tout temps dans les réglages de ton téléphone.</p>
 
   <h2>Le décompte sur l'écran verrouillé</h2>
-  <p>Il est calculé dans ton téléphone, d'après l'horaire, quand l'app est ouverte. Aucun serveur ne lui envoie de mise à jour. Tu peux le désactiver en tout temps.</p>
+  <p>Il est calculé dans ton téléphone, d'après l'horaire, quand l'app est ouverte, sur iPhone comme sur Android ; sur Android, il prend la forme d'une notification de Relève. Aucun serveur ne lui envoie de mise à jour. Tu peux le désactiver en tout temps.</p>
 
   <h2>Ton code d'activation (ton billet)</h2>
   <ul>
-    <li>L'activation est enregistrée dans ton téléphone. Sur le serveur, seuls l'état du code (en attente, utilisé, expiré ou révoqué), ses dates de création et d'activation et son statut (Chauffeur, le statut de base, Ambassadeur ou Concepteur) sont conservés, sans lien avec ton identité ni avec ton téléphone.</li>
-    <li>Les Ambassadeurs créent eux-mêmes, dans l'app, les billets des collègues qu'ils connaissent personnellement, au plus 5 en attente à la fois. Quand ton billet est créé dans l'app, par un Ambassadeur ou par le Concepteur, le serveur relie ton code au code de la personne qui l'a créé (le garant), pour que chaque accès reste traçable. Ce lien ne s'efface jamais, même si l'Ambassadeur perd son statut. Aucun prénom n'y est enregistré.</li>
-    <li>L'Ambassadeur et le Concepteur peuvent noter à qui ils ont remis un billet ou envoyé un code (un prénom ou des initiales). Cette note reste dans leur propre téléphone : elle n'est jamais transmise au serveur.</li>
-    <li>Le Concepteur peut aussi t'envoyer ton code par message (texto, messagerie ou courriel). Ce message, code compris, passe par le service choisi, selon ses propres règles, et peut y rester. Le Concepteur voit ce que ce service lui montre de toi (ton nom ou ton numéro, par exemple) et ce que tu lui réponds. Rien de cela n'entre dans l'app ni sur le serveur.</li>
+    <li>L'activation est enregistrée dans ton téléphone. Sur le serveur, seuls l'état du code (en attente, utilisé, expiré ou révoqué), ses dates de création et d'activation et son statut (statut de base, Ambassadeur ou Concepteur) sont conservés, sans lien avec ton identité ni avec ton téléphone. Si ton code a été envoyé par message, le serveur garde aussi la date de son premier envoi. Si un accès a été retiré parce que ce n'était pas la personne prévue, il garde aussi qui l'a retiré (le garant ou le Concepteur).</li>
+    <li>Le Concepteur décide qui peut créer des billets dans l'app : tant qu'il n'a pas ouvert les invitations à tous, seuls lui et les Ambassadeurs le peuvent. Un billet se crée seulement pour une personne qu'on connaît personnellement ; il se montre en personne ou s'envoie par message, à cette seule personne. Quand ton billet est créé dans l'app, le serveur relie ton code au code de la personne qui l'a créé (le garant), pour qu'on sache qui a créé chaque billet. Ce lien est gardé tant que l'app est en service, même si le statut du garant change. Aucun prénom n'y est enregistré.</li>
+    <li>La personne qui crée ton billet peut noter à qui elle l'a remis ou envoyé (un prénom ou des initiales). Cette note reste dans son propre téléphone : elle n'est jamais transmise au serveur.</li>
+    <li>Ton code peut aussi t'être envoyé par message (texto, messagerie ou courriel). Ce message, code compris, passe par le service choisi, selon ses propres règles, et peut y rester. La personne qui te l'envoie voit ce que ce service lui montre de toi (ton nom ou ton numéro, par exemple) et ce que tu lui réponds. Rien de cela n'entre dans l'app ni sur le serveur.</li>
+    <li>Pendant les 24 heures qui suivent l'activation, la personne qui a créé ton billet peut retirer l'accès du téléphone qui l'a activé, si ce n'était pas la personne prévue.</li>
     <li>Ton téléphone garde la version des conditions que tu as acceptée, la date et une empreinte de ton code (jamais le code lui-même). C'est ce qui permet de te présenter les conditions de nouveau chaque fois que tu actives un nouveau code. Rien de cela n'est transmis au serveur.</li>
     <li>Si tu supprimes vraiment l'app (et pas seulement son icône), ton code ne peut plus servir : si tu la réinstalles, elle l'efface de ton téléphone et te demande un nouveau code.</li>
   </ul>
@@ -64,16 +70,16 @@ a{color:var(--nuit)}
   <h2>La page d'installation</h2>
   <ul>
     <li>La page du billet n'utilise aucun traceur, aucune police ni aucun script venant d'ailleurs.</li>
-    <li>Ton code est placé après le « # » de l'adresse : ton navigateur n'envoie jamais cette partie au serveur qui héberge la page. Si ce lien t'arrive par message, le service de messagerie, lui, a le message en entier.</li>
-    <li>Sur iPhone, toucher « Installer » copie ton NIP dans le presse-papiers. Au premier départ, l'app lit le presse-papiers seulement si tu touches « Coller ». Si elle y reconnaît ton code, elle le vide ; sinon, elle n'y touche pas.</li>
-    <li>Sur Android, ton NIP voyage avec le lien Google Play, qui le remet à l'app quand elle s'installe.</li>
+    <li>Ton code est placé après le « # » de l'adresse : ton navigateur n'envoie jamais cette partie au serveur qui héberge la page. Si ce lien t'arrive par message, le service de messagerie, lui, a le message en entier. Pour afficher l'aperçu du lien (un titre, une phrase et l'icône de Relève), le service de messagerie peut consulter cette page ; il ne lui transmet pas ton code, parce qu'il se trouve après le « # ».</li>
+    <li>Sur iPhone, toucher « Installer » copie ton code dans le presse-papiers. Au premier départ, l'app lit le presse-papiers seulement si tu touches « Coller ». Si elle y reconnaît ton code, elle le vide ; sinon, elle n'y touche pas.</li>
+    <li>Sur Android, ton code voyage avec le lien Google Play, qui le remet à l'app quand elle s'installe.</li>
   </ul>
 
   <h2>Signalements</h2>
   <p>Un signalement indique si une navette est passée en avance, à l'heure ou en retard. Il ne contient que le trajet, l'arrêt, l'heure prévue du passage, la date et ton choix. Aucun nom, matricule, identifiant de téléphone, position ni heure d'envoi n'est conservé.</p>
 
   <h2>Notifications</h2>
-  <p>Seul le téléphone du Concepteur reçoit des notifications venant du serveur (par exemple, quand un nouveau collègue active l'app). Son adresse de notification est la seule enregistrée. Aucun autre téléphone n'en a une sur le serveur. Ces notifications ne contiennent aucun prénom, seulement la fin du code de l'Ambassadeur (par exemple « •••-8RT »), et passent par les services d'Expo et d'Apple.</p>
+  <p>Seul le téléphone du Concepteur reçoit des notifications venant du serveur : un billet créé, envoyé, renvoyé ou annulé, un accès retiré, une nouvelle inscription. Son adresse de notification est la seule enregistrée. Aucun autre téléphone n'en a une sur le serveur. Ces notifications ne contiennent aucun prénom, seulement la fin du code de la personne qui a créé le billet (par exemple « •••-8RT »), et passent par les services d'Expo et d'Apple. Le décompte de l'écran verrouillé, lui, ne vient pas du serveur.</p>
 
   <h2>Période d'essai</h2>
   <p>Avant le lancement, Relève est mise à l'essai par les Testeurs, par TestFlight (Apple) et par un test fermé sur Google Play. Pour le test fermé sur Android, le Concepteur doit inscrire l'adresse du compte Google de chaque Testeur sur une liste privée de testeurs. Ces adresses ne servent que pendant la période d'essai : elles sont retirées à la fin de celle-ci, ou plus tôt si l'accès prend fin, et aucune adresse Google n'est demandée ensuite.</p>
@@ -93,16 +99,20 @@ a{color:var(--nuit)}
   <ul>
     <li><strong>Signalements anonymes :</strong> sans limite de durée. Ils ne sont liés à personne et servent à dégager des tendances.</li>
     <li><strong>Tentatives ratées d'activation :</strong> seulement le genre de tentative et le moment, sans aucun identifiant. Elles sont effacées après une journée.</li>
-    <li><strong>Codes d'activation :</strong> conservés sans limite de durée, avec leur état (en attente, utilisé, expiré ou révoqué) et leurs dates. Ils ne sont liés ni à ton identité ni à ton téléphone. Pour un code créé par un Ambassadeur, le lien avec le code de cet Ambassadeur est aussi gardé, pour que chaque accès reste traçable.</li>
-    <li><strong>Message qui contient ton code :</strong> gardé par le service de messagerie, selon ses propres règles. Le code, lui, ne sert plus une fois activé, et expire 7 jours après sa création s'il ne sert pas.</li>
+    <li><strong>Codes d'activation :</strong> conservés tant que l'app est en service, avec leur état (en attente, utilisé, expiré ou révoqué) et leurs dates (création, activation et, pour un code envoyé par message, premier envoi). Ils ne sont liés ni à ton identité ni à ton téléphone. Pour un code créé dans l'app, le lien avec le code de la personne qui l'a créé est aussi gardé, pour qu'on sache qui a créé chaque billet, et, si un accès a été retiré parce que ce n'était pas la personne prévue, qui l'a retiré, sauf si tu le fais effacer (<a href="#effacement">voir plus bas</a>).</li>
+    <li><strong>Message qui contient ton code :</strong> gardé par le service de messagerie, selon ses propres règles. Le code, lui, ne sert plus une fois activé ; s'il ne sert pas, il expire 7 jours après sa création, ou au plus tard 24 heures après son premier envoi par message.</li>
     <li><strong>Adresse du compte Google d'un testeur Android :</strong> retirée de la liste privée à la fin de la période d'essai, ou plus tôt si l'accès prend fin.</li>
     <li><strong>Courriels que tu envoies au Concepteur :</strong> supprimés dans les 30 jours suivant la réponse.</li>
     <li><strong>Coordonnées d'un Testeur ou d'un Ambassadeur :</strong> gardées par le Concepteur dans ses contacts personnels seulement, pour la fin précise à laquelle la personne a consenti (les tests, ou le rôle d'Ambassadeur), jusqu'à ce qu'elle retire son consentement.</li>
     <li><strong>Dans ton téléphone :</strong> ton activation, ton acceptation des conditions et tes réglages y restent jusqu'à ce que tu supprimes l'app. Si tu la réinstalles, l'ancien code est effacé.</li>
   </ul>
 
-  <h2>Tes droits et l'effacement</h2>
-  <p>La Loi 25 te donne le droit de savoir quels renseignements une organisation détient sur toi, de les faire corriger, de retirer ton consentement et de demander qu'ils soient effacés. Comme rien sur le serveur ne te relie à toi (ni nom, ni identifiant de téléphone), il n'y a pas de profil à consulter ni à effacer : les signalements sont anonymes. L'état d'un code n'est relié à toi que par la note privée du Concepteur ou par le message qui te l'a apporté : tu peux lui demander de les effacer.</p>
+  <h2 id="effacement">Tes droits et l'effacement</h2>
+  <p>La Loi 25 te donne le droit de savoir quels renseignements une organisation détient sur toi, de les faire corriger, de retirer ton consentement et de demander qu'ils soient effacés.</p>
+  <p>Sur le serveur de Relève, rien ne contient ton nom ni un identifiant de ton téléphone. Ton code y est gardé avec son état, ses dates et, s'il a été créé dans l'app, son lien avec le code de ton garant. Il n'est relié à toi que par ton code lui-même, par la note privée de la personne qui te l'a remis ou par le message qui te l'a apporté : tu peux lui demander d'effacer sa note. Les signalements, eux, ne sont liés à personne.</p>
+  <p>Pour faire effacer ton code, deux façons. Dans l'app : au bas d'À propos, touche « Effacer mon code », puis « Effacer ». Sans l'app : écris au Concepteur, Frédérick Thibeault, qui développe Relève (l'adresse est au bas de cette page), en lui donnant le code reçu dans ton message.</p>
+  <p>Ce qui est effacé : ton code, ses dates (création, activation, envoi, retrait) et son lien avec ton garant. Ce qui arrive aussi : ton accès à l'app prend fin ; les billets que tu as créés et qui n'ont pas encore servi ne marchent plus ; si tu étais Ambassadeur, tu perds ce statut. Ce qui reste : les billets que tu as créés et qui ont déjà servi, sans lien avec toi ; les signalements, liés à personne ; et ce que l'app garde dans ton téléphone, jusqu'à ce que tu la supprimes.</p>
+  <p>Dans l'app, l'effacement est immédiat. Par courriel, il est fait dans les 30 jours. Le serveur de Relève ne garde aucune copie de sauvegarde : ton code effacé ne reste nulle part.</p>
   <ul>
     <li>Pour effacer ce que l'app garde dans ton téléphone : désinstalle-la.</li>
     <li>Pour faire retirer ton adresse courriel, l'adresse de ton compte Google de testeur ou ton accès : écris au Concepteur.</li>
@@ -115,7 +125,7 @@ a{color:var(--nuit)}
   <h2>Nous joindre</h2>
   <p>Personne responsable de la protection des renseignements personnels : le Concepteur, Frédérick Thibeault (<a href="mailto:fred.thibeault@proton.me">fred.thibeault@proton.me</a>). Cette adresse sert à tes questions. Écrire ne donne pas de code d'activation.</p>
 
-  <p class="date">Mise à jour le 9 novembre 2026</p>
+  <p class="date">Mise à jour le 18 novembre 2026</p>
 </main>
 </body>
 </html>
