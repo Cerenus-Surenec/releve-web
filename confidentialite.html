@@ -11,7 +11,10 @@
 <!-- Politique de confidentialité de Relève (adresse donnée aux magasins). Reprend la section 8
      des conditions d'utilisation ; toute modification doit suivre celles-ci.
      Version des conditions 1.9 : P19-1 à P19-16, approuvés le 18 novembre 2026 (11 h 17 et 11 h 29).
-     « Mise à jour le » = la date de la fusion dans main (22 novembre 2026, publication du site).
+     Version des conditions 1.10 (le lien Ambassadeur) : P110-1 à P110-4, approuvés mot pour mot le 19 novembre 2026,
+     7 h 03, « ok 1.10 avec NL-a » (claude/conditions-1-10-a-approuver.md).
+     « Mise à jour le » = la date de la fusion dans main (25 novembre 2026, « Go PO-a » de Frédérick, 16 h 17 :
+     la politique 1.10 publiée seule, avant les conditions 1.10 et la page du lien Ambassadeur).
      L'ancre #effacement est l'adresse donnée à Google pour la suppression : ne pas la renommer. -->
 <style>
 :root{--creme:#FFF4E6;--nuit:#121A38;--gris:#4A4766}
@@ -63,6 +66,7 @@ a{color:var(--nuit)}
     <li>La personne qui crée ton billet peut noter à qui elle l'a remis ou envoyé (un prénom ou des initiales). Cette note reste dans son propre téléphone : elle n'est jamais transmise au serveur.</li>
     <li>Ton code peut aussi t'être envoyé par message (texto, messagerie ou courriel). Ce message, code compris, passe par le service choisi, selon ses propres règles, et peut y rester. La personne qui te l'envoie voit ce que ce service lui montre de toi (ton nom ou ton numéro, par exemple) et ce que tu lui réponds. Rien de cela n'entre dans l'app ni sur le serveur.</li>
     <li>Pendant les 24 heures qui suivent l'activation, la personne qui a créé ton billet peut retirer l'accès du téléphone qui l'a activé, si ce n'était pas la personne prévue.</li>
+    <li>Le Concepteur nomme un Ambassadeur en lui envoyant un lien personnel, avec un mot pour cette personne. Ce mot voyage dans le lien, après le « # » : il ne passe jamais par le serveur ni par la page web du lien, mais la messagerie qui transmet le lien le voit, comme le reste du message. Le serveur garde seulement une empreinte du lien (une forme brouillée, effacée dès que le lien a servi ou est annulé ; jamais le lien lui-même), ses dates (création, heure limite, réception, ouverture ou annulation) et le code du téléphone qui l'a reçu, puis ouvert : c'est ce qui permet que le lien ne serve qu'une fois, seulement sur ce téléphone, et que le Concepteur sache s'il a été ouvert. Dans ton téléphone, l'app garde le lien reçu jusqu'à ce que tu l'ouvres, puis le mot, la date d'ouverture et le fait que tu l'as vu ; ils suivent la sauvegarde de ton téléphone.</li>
     <li>Ton téléphone garde la version des conditions que tu as acceptée, la date et une empreinte de ton code (jamais le code lui-même). C'est ce qui permet de te présenter les conditions de nouveau chaque fois que tu actives un nouveau code. Rien de cela n'est transmis au serveur.</li>
     <li>Si tu supprimes vraiment l'app (et pas seulement son icône), ton code ne peut plus servir : si tu la réinstalles, elle l'efface de ton téléphone et te demande un nouveau code.</li>
   </ul>
@@ -100,6 +104,7 @@ a{color:var(--nuit)}
     <li><strong>Signalements anonymes :</strong> sans limite de durée. Ils ne sont liés à personne et servent à dégager des tendances.</li>
     <li><strong>Tentatives ratées d'activation :</strong> seulement le genre de tentative et le moment, sans aucun identifiant. Elles sont effacées après une journée.</li>
     <li><strong>Codes d'activation :</strong> conservés tant que l'app est en service, avec leur état (en attente, utilisé, expiré ou révoqué) et leurs dates (création, activation et, pour un code copié ou partagé pour être envoyé par message, premier envoi). Ils ne sont liés ni à ton identité ni à ton téléphone. Pour un code créé dans l'app, le lien avec le code de la personne qui l'a créé est aussi gardé, pour qu'on sache qui a créé chaque billet, et, si un accès a été retiré parce que ce n'était pas la personne prévue, qui l'a retiré, sauf si tu le fais effacer (<a href="#effacement">voir plus bas</a>).</li>
+    <li><strong>Liens Ambassadeur :</strong> l'empreinte d'un lien est effacée dès qu'il a servi ou qu'il est annulé. Le reste est effacé un jour après l'annulation, ou un jour après l'heure limite si le lien n'est jamais arrivé dans l'app, et 30 jours après l'ouverture pour un lien ouvert. Un lien arrivé dans l'app mais pas encore ouvert est gardé jusqu'à son ouverture ou son annulation. Si tu fais effacer ton code, il n'y figure plus.</li>
     <li><strong>Message qui contient ton code :</strong> gardé par le service de messagerie, selon ses propres règles. Le code, lui, ne sert plus une fois activé ; s'il ne sert pas, il expire 7 jours après sa création, ou, s'il a été copié ou partagé pour être envoyé par message, au plus tard 24 heures après.</li>
     <li><strong>Adresse du compte Google d'un testeur Android :</strong> retirée de la liste privée à la fin de la période d'essai, ou plus tôt si l'accès prend fin.</li>
     <li><strong>Courriels que tu envoies au Concepteur :</strong> supprimés dans les 30 jours suivant la réponse.</li>
@@ -109,9 +114,9 @@ a{color:var(--nuit)}
 
   <h2 id="effacement">Tes droits et l'effacement</h2>
   <p>La Loi 25 te donne le droit de savoir quels renseignements une organisation détient sur toi, de les faire corriger, de retirer ton consentement et de demander qu'ils soient effacés.</p>
-  <p>Sur le serveur de Relève, rien ne contient ton nom ni un identifiant de ton téléphone. Ton code y est gardé avec son état, ses dates et, s'il a été créé dans l'app, son lien avec le code de ton garant. Il n'est relié à toi que par ton code lui-même, par la note privée de la personne qui te l'a remis ou par le message qui te l'a apporté : tu peux lui demander d'effacer sa note. Les signalements, eux, ne sont liés à personne.</p>
+  <p>Sur le serveur de Relève, rien ne contient ton nom ni un identifiant de ton téléphone. Ton code y est gardé avec son état, ses dates et, s'il a été créé dans l'app, son lien avec le code de ton garant, et, pendant son délai, dans le lien Ambassadeur qui t'a été envoyé. Il n'est relié à toi que par ton code lui-même, par la note privée de la personne qui te l'a remis ou par le message qui te l'a apporté, et, si tu es Ambassadeur, par la note privée du Concepteur sur ton lien ou par le message de ce lien : tu peux demander à la personne qui a écrit une note de l'effacer. Les signalements, eux, ne sont liés à personne.</p>
   <p>Pour faire effacer ton code, deux façons. Dans l'app : au bas d'À propos, touche « Effacer mon code », puis « Effacer ». Sans l'app : écris au Concepteur, Frédérick Thibeault, qui développe Relève (l'adresse est au bas de cette page), en lui donnant le code reçu dans ton message.</p>
-  <p>Ce qui est effacé : ton code, ses dates (création, activation, envoi, retrait) et son lien avec ton garant. Ce qui arrive aussi : ton accès à l'app prend fin ; les billets que tu as créés et qui n'ont pas encore servi ne marchent plus ; si tu étais Ambassadeur, tu perds ce statut. Ce qui reste : les billets que tu as créés et qui ont déjà servi, sans lien avec toi ; les signalements, liés à personne ; et ce que l'app garde dans ton téléphone, jusqu'à ce que tu la supprimes.</p>
+  <p>Ce qui est effacé : ton code, ses dates (création, activation, envoi, retrait) et son lien avec ton garant ; s'il figure dans un lien Ambassadeur, il en est retiré. Ce qui arrive aussi : ton accès à l'app prend fin ; les billets que tu as créés et qui n'ont pas encore servi ne marchent plus ; si tu étais Ambassadeur, tu perds ce statut. Ce qui reste : les billets que tu as créés et qui ont déjà servi, sans lien avec toi ; le lien Ambassadeur qui t'a été envoyé, s'il y a lieu, sans ton code, jusqu'à la fin de son délai ; les signalements, liés à personne ; et ce que l'app garde dans ton téléphone, jusqu'à ce que tu la supprimes.</p>
   <p>Dans l'app, l'effacement est immédiat. Par courriel, il est fait dans les 30 jours. Le serveur de Relève ne garde aucune copie de sauvegarde : ton code effacé ne reste nulle part.</p>
   <ul>
     <li>Pour effacer ce que l'app garde dans ton téléphone : désinstalle-la.</li>
@@ -125,7 +130,7 @@ a{color:var(--nuit)}
   <h2>Nous joindre</h2>
   <p>Personne responsable de la protection des renseignements personnels : le Concepteur, Frédérick Thibeault (<a href="mailto:fred.thibeault@proton.me">fred.thibeault@proton.me</a>). Cette adresse sert à tes questions. Écrire ne donne pas de code d'activation.</p>
 
-  <p class="date">Mise à jour le 22 novembre 2026</p>
+  <p class="date">Mise à jour le 25 novembre 2026</p>
 </main>
 </body>
 </html>
