@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#FFF4E6">
+<title>Relève</title>
+<link rel="icon" href="../icone.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<!--
+  Le lien « Ambassadeur » (moment Ambassadeur, M1, 18 novembre 2026).
+  Sur un téléphone où Relève est installée, ce lien n'arrive jamais ici : l'iPhone et Android l'ouvrent
+  directement dans Relève (liens vérifiés, fichiers /.well-known/ du dépôt Cerenus-Surenec.github.io).
+  Sur un ordinateur, cette page renvoie tout de suite vers la page d'installation habituelle, SANS le jeton ni
+  le mot : elle ne lit pas ce qui suit le « # », ne l'envoie à personne, et l'efface de l'adresse et de
+  l'historique avant de partir.
+  C8a (revue des 15, textes approuvés le 21 novembre 2026) : sur un téléphone, le lien s'ouvre parfois dans
+  Safari ou Chrome même quand Relève est installée. La page offre alors « Ouvrir dans Relève », qui ouvre l'app
+  par son adresse à elle (releve://ambassadeur), avec le « # … » recopié tel quel : la page ne le décode pas, ne
+  le montre pas et ne l'envoie à personne ; il ne quitte pas le téléphone. Si Relève ne s'est pas ouverte après
+  2 secondes, une phrase et « Installer Relève » apparaissent (et le « # … » est effacé avant de partir).
+  Charger cette page (ou son aperçu dans une messagerie) ne consomme rien : seul le toucher sur « Ouvrir »,
+  dans Relève, donne le statut. Aucune ressource externe, aucun traceur.
+  Dans le navigateur intégré d'une messagerie, sur un téléphone, elle reste et affiche M1-c (voir le script).
+-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Relève">
+<meta property="og:title" content="Un mot pour toi">
+<meta property="og:description" content="Ouvre ce lien sur ton téléphone, dans Relève.">
+<meta property="og:url" content="https://cerenus-surenec.github.io/releve-web/ambassadeur">
+<meta property="og:image" content="https://cerenus-surenec.github.io/releve-web/icone.png">
+<meta property="og:image:width" content="192">
+<meta property="og:image:height" content="192">
+<meta property="og:image:alt" content="Icône de Relève">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--creme:#FFF4E6;--nuit:#121A38;--gris:#4A4766}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--creme);color:var(--nuit)}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{min-height:100vh;min-height:100dvh;max-width:460px;margin:0 auto;display:flex;flex-direction:column;gap:22px;
+  padding:calc(48px + env(safe-area-inset-top)) 22px calc(30px + env(safe-area-inset-bottom))}
+main{display:none}
+.integre main.integre,.telephone main.telephone{display:flex}
+h1{margin:0;font-size:28px;line-height:1.2;font-weight:800}
+.aide{display:none;flex-direction:column;gap:16px}
+.aide.visible{display:flex}
+.aide p{margin:0;font-size:17px;line-height:1.45;color:var(--gris)}
+.icone{width:84px;height:84px;border-radius:20px;box-shadow:0 10px 30px rgba(18,26,56,.18)}
+.bandeau{margin:0;padding:16px 18px;border-radius:18px;background:var(--nuit);color:var(--creme);font-size:17px;line-height:1.45;font-weight:700}
+.bouton{display:flex;align-items:center;justify-content:center;min-height:60px;margin-top:auto;padding:0 20px;border-radius:30px;
+  background:var(--nuit);color:var(--creme);font-size:18px;font-weight:800;text-decoration:none}
+.telephone .bouton{margin-top:0}
+.bouton.second{background:transparent;color:var(--nuit);box-shadow:inset 0 0 0 2px var(--nuit)}
+.bas{margin-top:auto;display:flex;flex-direction:column;gap:16px}
+</style>
+<script>
+  // M1-c (texte approuvé le 18 novembre 2026, 18 h 55) : dans le navigateur intégré d'une messagerie
+  // (Messenger, Facebook, Instagram), le téléphone n'ouvre souvent pas Relève. On reste alors sur cette page,
+  // SANS effacer l'adresse (elle doit garder son « # » pour s'ouvrir dans Safari ou Chrome, puis dans Relève),
+  // et on dit quoi faire. Partout ailleurs : on efface le « # … » de l'adresse et de l'historique, puis on va à la
+  // page d'installation habituelle. La page ne lit jamais ce qui suit le « # » et ne l'envoie à personne.
+  var ua = navigator.userAgent || '';
+  var integre = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
+  var telephone = /iPhone|iPad|iPod|Android/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (integre && telephone) {
+    document.documentElement.className = 'integre';
+  } else if (telephone && location.hash.length > 1) {
+    // C8a : Safari ou Chrome, sur un téléphone. Le bouton reçoit l'adresse de l'app et le « # … » tel quel.
+    document.documentElement.className = 'telephone';
+  } else {
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+    location.replace('../');
+  }
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=../"></noscript>
+</head>
+<body>
+<main class="integre">
+  <img class="icone" src="../apple-touch-icon.png" alt="Icône de Relève" width="84" height="84">
+  <p class="bandeau" role="note">Tu as déjà Relève&#8239;? Dans le menu de cette page (trois points ou icône de partage), choisis de l’ouvrir dans ton navigateur, comme Safari ou Chrome. Touche ensuite «&nbsp;Ouvrir dans Relève&nbsp;».</p>
+  <a class="bouton" href="../">Installer Relève</a>
+</main>
+<main class="telephone">
+  <img class="icone" src="../apple-touch-icon.png" alt="Icône de Relève" width="84" height="84">
+  <h1>Ce lien s’ouvre dans Relève</h1>
+  <div class="bas">
+    <a class="bouton" id="ouvrir" href="../">Ouvrir dans Relève</a>
+    <div class="aide" id="aide" aria-live="polite">
+      <p>Relève ne s’est pas ouverte&#8239;? Si tu ne l’as pas encore, installe-la, puis touche de nouveau le lien dans ton message.</p>
+      <a class="bouton second" id="installer" href="../">Installer Relève</a>
+    </div>
+  </div>
+</main>
+<script>
+  // C8a : « Ouvrir dans Relève ». L'adresse de l'app reçoit le « # … » tel quel (jamais décodé ni lu).
+  (function () {
+    if (document.documentElement.className !== 'telephone') return;
+    var ouvrir = document.getElementById('ouvrir');
+    var aide = document.getElementById('aide');
+    var installer = document.getElementById('installer');
+    ouvrir.href = 'releve://ambassadeur' + location.hash;
+    var parti = false;
+    var essai = 0;
+    function quitte() { parti = true; }
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') quitte(); });
+    window.addEventListener('pagehide', quitte);
+    function verifier() {
+      if (parti) return;
+      // Une fenêtre du téléphone (« Ouvrir dans Relève ? ») est encore là : on attend qu'elle se ferme.
+      if (!document.hasFocus() && essai++ < 40) { setTimeout(verifier, 500); return; }
+      aide.className = 'aide visible';
+    }
+    ouvrir.addEventListener('click', function () {
+      parti = false;
+      essai = 0;
+      setTimeout(verifier, 2000);
+    });
+    // Avant d'aller installer : le « # … » est effacé de l'adresse et de l'historique, comme avant.
+    installer.addEventListener('click', function (e) {
+      e.preventDefault();
+      try { history.replaceState(null, '', location.pathname); } catch (err) {}
+      location.replace('../');
+    });
+  })();
+</script>
+</body>
+</html>
